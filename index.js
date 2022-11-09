@@ -16,7 +16,7 @@ const clipboard = require('./controller/controller.clipboard')
 app.use(bodyParser.json());
 
 // The record generator works only once.
-generator.generateRecords(); 
+// generator.generateRecords(); 
 
 app.use('/clipboard', clipboard)
 
