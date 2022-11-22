@@ -13,5 +13,8 @@ module.exports = {
             ++firstRecordSerialNo;
         }
 
+    },
+    generateIndex: async ()=>{
+        await db.executeQuery('CREATE INDEX NULL_MSGS ON notes(data) WHERE data IS NULL');
     }
 }

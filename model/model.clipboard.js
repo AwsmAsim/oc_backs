@@ -18,9 +18,9 @@ module.exports = {
         await deleteOlder();
         var results = await db.executeQuery('SELECT * FROM notes where data IS NULL');
 
-        console.log('Results with NULL:')
-        console.log(results);
-        console.log(`${results}\n\n`)
+        // console.log('Results with NULL:')
+        // console.log(results);
+        // console.log(`${results}\n\n`)
 
         if(results.rows.length == 0){
             await deleteEarliest();

@@ -1,9 +1,10 @@
 const express = require('express')
 app = express()
+const cors = require('cors');
+app.use(cors());
 const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3000
 const db = require('./util/db')
-const cors = require('cors');
 var generator = require('./generator/generator')
 const clipboard = require('./controller/controller.clipboard')
 
@@ -14,11 +15,11 @@ const clipboard = require('./controller/controller.clipboard')
 //     console.log(val);
 // })
 // console.log(result);
-app.use(cors());
 app.use(bodyParser.json());
 
 // The record generator works only once.
 // generator.generateRecords(); 
+// generator.generateIndex();
 
 app.use('/clipboard', clipboard)
 
