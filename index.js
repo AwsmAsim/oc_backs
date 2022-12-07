@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3000
 const db = require('./util/db')
 var generator = require('./generator/generator')
 const clipboard = require('./controller/controller.clipboard')
+const userArrival = require('./controller/contoller.user_arrival')
 
 // db.executeQuery('INSERT INTO notes(serial_no, data, code, timestamp) VALUES($1, $2, $3, (SELECT CURRENT_TIMESTAMP))', [10002, 'first data', 1002]).catch((err)=>{
 //     console.log(err);
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 // generator.generateIndex();
 
 app.use('/clipboard', clipboard)
+app.use('/user-arrival', userArrival)
 
 
 app.get('/', (req, res)=>{
