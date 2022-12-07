@@ -1,20 +1,20 @@
 const db = require('pg')
 
-const client = new db.Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'open_clipboard',
-    password: 'root',
-    port: 5432
-});
-
 // const client = new db.Client({
-//     user: 'wezhfbit',
-//     host: 'tiny.db.elephantsql.com',
-//     database: 'wezhfbit',
-//     password: 'bC1A7DV5NUyWZMgSkNocO5rQ554tyTx3',
+//     user: 'postgres',
+//     host: 'localhost',
+//     database: 'open_clipboard',
+//     password: 'root',
 //     port: 5432
 // });
+
+const client = new db.Client({
+    user: 'wezhfbit',
+    host: 'tiny.db.elephantsql.com',
+    database: 'wezhfbit',
+    password: 'bC1A7DV5NUyWZMgSkNocO5rQ554tyTx3',
+    port: 5432
+});
 
 try{
     client.connect();
