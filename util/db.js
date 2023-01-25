@@ -16,6 +16,7 @@ const client = new db.Client({
     port: 5432
 });
 
+
 try{
     client.connect();
 }catch(err){

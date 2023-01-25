@@ -15,15 +15,21 @@ module.exports = {
         console.log(responseBody)
         console.log()
         var message = responseBody.message;
+        console.time('Delete Older')
         await deleteOlder();
+        console.timeEnd('Delete Older')
+        console.time('Select data NULL records')
         var results = await db.executeQuery('SELECT * FROM notes where data IS NULL');
+        console.timeEnd('Select data NULL records')
 
         // console.log('Results with NULL:')
         // console.log(results);
         // console.log(`${results}\n\n`)
 
         if(results.rows.length == 0){
+            console.time('Delete Earliest')
             await deleteEarliest();
+            console.timeEnd('Delete Earliest')
             console.log('Result after deleting earliest');
             results = await db.executeQuery('SELECT * FROM notes where data IS NULL');
             console.log(`${results}\n\n`)
@@ -35,7 +41,9 @@ module.exports = {
         console.log(`randomIdx: ${randomIdx}, new serial no: ${newserial_no}, newCode: ${newCode} `)
 
         try{
+            console.time('Insertion')
             await db.executeQuery('UPDATE notes SET data = $1, timestamp = CURRENT_TIMESTAMP where serial_no = $2', [message, newserial_no]);
+            console.timeEnd('Insertion')
             return newCode;
         }catch(err){
             console.log(err);
